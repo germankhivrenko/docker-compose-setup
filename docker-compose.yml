@@ -1,0 +1,31 @@
+version: "3.3"
+
+networks:
+  default:
+    driver: bridge
+
+volumes:
+  my-postgres-volume:
+    external: true
+
+services:
+  my-service:
+    build: ./my-service
+    ports:
+      - "4000:4000"
+    env_file:
+      - "${ENV:-prod}.my-service.env"
+    #profiles: ["backend"]
+    depends_on:
+      - "my-postgres"
+
+  my-postgres:
+    image: "postgres:${POSTGRES_VERSION:-14}"
+    volumes:
+      - my-postgres-volume:/var/lib/postgresql/data 
+    ports:
+      - "5433:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    #profiles: ["db"]

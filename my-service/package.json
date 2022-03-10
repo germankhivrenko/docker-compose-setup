@@ -1,0 +1,21 @@
+{
+  "name": "my-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node -r esm index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fastify": "3.27.2",
+    "pg": "8.7.3"
+  },
+  "devDependencies": {
+    "esm": "3.2.25",
+    "nodemon": "2.0.15"
+  }
+}
