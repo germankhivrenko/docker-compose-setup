@@ -15,9 +15,9 @@ services:
       - "4000:4000"
     env_file:
       - "${ENV:-prod}.my-service.env"
-    #profiles: ["backend"]
+    # profiles: ["backend"]
     depends_on:
-      - "my-postgres"
+     - "my-postgres"
 
   my-postgres:
     image: "postgres:${POSTGRES_VERSION:-14}"
@@ -28,4 +28,4 @@ services:
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-    #profiles: ["db"]
+    # profiles: ["db"]

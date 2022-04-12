@@ -2,7 +2,9 @@ import db from './db.js'
 
 export default async function routes(fastify, options) {
   fastify.get('/items', async (req, reply) => {
-    const {rows} = await db.query('select * from items;')
+    const client = await db.connect()
+    const {rows} = await client.query('select * from items;')
+    client.release()
 
     return rows
   })
